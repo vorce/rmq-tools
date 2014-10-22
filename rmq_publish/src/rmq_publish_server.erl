@@ -115,7 +115,7 @@ handle_cast({send, Payload}, State) ->
                                immediate = State#state.immediate,
                                mandatory = State#state.mandatory},
     Msg = #amqp_msg{props = #'P_basic'{headers = State#state.headers,
-                        content_type = State#state.content_type},
+                        content_type = erlang:list_to_bitstring(State#state.content_type)},
                     payload = Payload},
     ok = amqp_channel:cast(State#state.channel, Publish, Msg),
     NewState = State#state{last_sent = MessageId},
