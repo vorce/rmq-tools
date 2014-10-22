@@ -31,6 +31,8 @@ main(Args) ->
       "message. Example: --header myheader=myvalue."},
      {immediate, undefined, "immediate", boolean, "Set immediate flag."},
      {mandatory, undefined, "mandatory", boolean, "Set mandatory flag."},
+     {content_type, $c, "content_type", {string, ""},
+        "Set the ContentType for every message."},
      {help, $h, "help", undefined, "Show usage info."}],
     {ok, {Props, Leftover}} = getopt:parse(OptSpecList, Args),
     Help = proplists:get_value(help, Props),
